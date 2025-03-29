@@ -19,6 +19,10 @@ Before proceeding, ensure you have the following software and extensions install
 
 * **Node.js & npm:** For JavaScript dependency management Preferred (v22.13.1) [Ref](https://nodejs.org/en/download).
 * **MongoDB Extension for PHP:** Required for database connectivity [Ref](https://www.php.net/mongodb.installation).
+* **PHP intl Extenstion:** Required for Filament 
+    ```
+        sudo apt install php-intl
+    ```
 
 ---
 
