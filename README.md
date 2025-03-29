@@ -1,23 +1,7 @@
 
 <p align="center">
-    <svg width="250" height="70" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g fill="white" stroke="black" stroke-width="1.5">
-            <!-- n -->
-            <path d="M20,110 V70 h15 v10 q0,-10 15,-10 t15,10 v30 h-15 v-25 q0,-5 -5,-5 t-5,5 v25 h-15 z"/>
-            <!-- e -->
-            <path d="M80,110 q-10,0 -15,-5 t-5,-15 q0,-10 5,-15 t15,-5 q8,0 13,4 t5,11 h-15 q0,-2 -1.5,-3.5 t-3.5,-1.5 q-5,0 -5,5 q0,6 5,6 q2,0 3.5,-1.5 t1.5,-3.5 h15 q0,7 -5,11 t-13,4 z"/>
-            <!-- x -->
-            <path d="M130,110 l-7,-10 l-7,10 h-15 l15,-20 l-15,-20 h15 l7,10 l7,-10 h15 l-15,20 l15,20 h-15 z"/>
-            <!-- a -->
-            <path d="M170,110 q-10,0 -15,-5 t-5,-15 q0,-10 5,-15 t15,-5 q10,0 15,5 v-5 h15 v40 h-15 v-5 q-5,5 -15,5 z M170,95 q5,0 5,-5 q0,-5 -5,-5 q-5,0 -5,5 q0,5 5,5 z"/>
-            <!-- r -->
-            <path d="M220,110 v-40 h15 v10 q5,-10 15,-10 h5 v15 h-5 q-5,0 -7.5,2.5 t-2.5,7.5 v15 h-15 z"/>
-        </g>
-    </svg>
+    <img src="./public/nexar-logo.svg" width="280" height="90" />
 </p>
-
-
-
 
 ## Introduction
 
