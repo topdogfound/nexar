@@ -1,0 +1,58 @@
+[
+    {
+        "apple" : {
+            "scientificName" : "",
+            "commonName" : "", 
+            "cropType" : "", 
+            "lifeCycle" : "", 
+            "duration" : "", 
+            "region": "", 
+            "economicImportance": "", 
+            
+            "spraySchedules" : {
+
+            },
+            "fertilizersSchedules" : {
+
+            },
+            "stages": {
+                "title": "Silver Tip",
+                "emoji": "🌿",
+                "imageUrl": [
+                    "/image/silver-tip.jpg"
+                ],
+                "duration": "Early Spring (March–April)",
+                "keyIndicators": [
+                    "Buds swell and show a silvery sheen.",
+                    "No visible green tissue yet."
+                ],
+                "idealConditions": {
+                    "temperature": "4–10°C (39–50°F)",
+                    "climate": "Cool, moist conditions favor healthy bud development."
+                },
+                "fertilizationRequirements": [
+                    "Minimal fertilization needed at this stage.",
+                    "Apply balanced nutrients if soil tests indicate deficiency."
+                ],
+                "commonPestsAndDiseases": [
+                    "Apple scab (Venturia inaequalis)",
+                    "Powdery mildew (Podosphaera leucotricha)",
+                    "Overwintering insect eggs (aphids, mites)"
+                ],
+                "yieldImpactFactors": [
+                    "Sudden frost can damage buds and delay growth.",
+                    "Excessive rain may encourage fungal diseases."
+                ],
+                "description": [
+                    "The first visible sign of growth after winter dormancy.",
+                    "Buds swell slightly and develop a silvery sheen at the tip."
+                ],
+                "careTips": [
+                    "Apply dormant oil sprays to eliminate overwintering pests.",
+                    "Start monitoring for early-season fungal infections like apple scab."
+                ]
+            }
+        }
+    }
+    
+]

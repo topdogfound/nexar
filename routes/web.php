@@ -15,6 +15,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemons.index');
     Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show');
+    Route::get('/tick-tack-toe', function () {
+        return Inertia::render('tick-tack-toe');
+    });
 
 });
 
