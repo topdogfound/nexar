@@ -45,8 +45,5 @@ RUN npm install && npm run build
 # Copy Nginx configuration
 COPY ./nginx/default.conf /etc/nginx/sites-available/default
 
-# Expose ports
-EXPOSE 80
-
-# Start both Nginx & PHP-FPM
-CMD service nginx start && php-fpm
+EXPOSE 10000
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
