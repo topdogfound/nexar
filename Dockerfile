@@ -1,47 +1,48 @@
-# Use an official PHP runtime as a parent image
-FROM php:8.3-fpm-alpine
+FROM php:8.3-fpm
 
-# Set the working directory to /var/www/html
-WORKDIR /var/www/html
+# Set working directory
+WORKDIR /var/www
 
-# Install system dependencies and PHP extensions
-RUN apk update && apk add --no-cache \
+# Install dependencies
+RUN apt-get update && apt-get install -y \
     git \
+    curl \
     zip \
     unzip \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    libxml2-dev \
     libzip-dev \
-    oniguruma-dev \
-    icu-dev \
-    $PHPIZE_DEPS \
-    && docker-php-ext-install pdo pdo_mysql mbstring tokenizer xml ctype json intl mongodb
+    libssl-dev \
+    pkg-config \
+    gnupg \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd zip pdo pdo_mysql intl \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
 
-# Install composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Install Composer
+COPY --from=composer:2.8.6 /usr/bin/composer /usr/bin/composer
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm@latest
 
 # Copy application files
-COPY . /var/www/html
+COPY . .
 
-# Install PHP dependencies
+# Set permissions
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+# Install PHP and Node dependencies
 RUN composer install --no-dev --optimize-autoloader
+RUN npm install && npm run build
 
-# Copy environment file (Render will provide these as env vars)
-# COPY .env .env # Remove this line for production.
-
-# Generate application key
-RUN php artisan key:generate
-
-# Optimize Laravel application
-RUN php artisan optimize:clear
-
-# Copy entrypoint script
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-RUN chmod +x /usr/local/bin/docker-entrypoint
-
-# Expose port 9000 and start php-fpm server
+# Expose port
 EXPOSE 9000
-CMD ["/usr/local/bin/docker-entrypoint"]
 
-# Install Node and NPM, build assets.
-RUN apk add --no-cache nodejs npm
-RUN npm install
-RUN npm run build # Assuming you use vite, or npm run production for webpack
+# Start php-fpm server
+CMD ["php-fpm"]
