@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     pkg-config \
     gnupg \
+    nginx \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd zip pdo pdo_mysql intl \
     && pecl install mongodb \
@@ -41,8 +42,11 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
-# Expose port
-EXPOSE 9000
+# Copy Nginx configuration
+COPY ./nginx/default.conf /etc/nginx/sites-available/default
 
-# Start php-fpm server
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Expose ports
+EXPOSE 80
+
+# Start both Nginx & PHP-FPM
+CMD service nginx start && php-fpm
