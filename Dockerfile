@@ -4,7 +4,7 @@ FROM php:8.3-fpm-alpine
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
 
-# Install system dependencies
+# Install system dependencies and PHP extensions
 RUN apk update && apk add --no-cache \
     git \
     zip \
@@ -13,9 +13,7 @@ RUN apk update && apk add --no-cache \
     oniguruma-dev \
     icu-dev \
     $PHPIZE_DEPS \
-    && pecl install zip intl mongodb \
-    && docker-php-ext-enable zip intl mongodb \
-    && docker-php-ext-install pdo pdo_mysql mbstring tokenizer xml ctype json
+    && docker-php-ext-install pdo pdo_mysql mbstring tokenizer xml ctype json intl mongodb
 
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
