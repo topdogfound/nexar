@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     pkg-config \
     gnupg \
-    nginx \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd zip pdo pdo_mysql intl \
     && pecl install mongodb \
@@ -43,7 +42,6 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
 # Copy Nginx configuration
-COPY ./nginx/default.conf /etc/nginx/sites-available/default
 
 EXPOSE 10000
 CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
