@@ -1,4 +1,4 @@
-import { Globe } from '@/components/globe';
+import { HyperText } from '@/components/hyper-text';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 
@@ -42,18 +42,17 @@ export default function Welcome() {
                 <div className="h-screen flex flex-col justify-around items-center">
                     {/* Responsive Text */}
                     <div className="flex flex-wrap justify-center  gap-2 md:gap-4 w-screen">
-                        {["Nexar", "is", "Under", "Development"].map((word, index) => (
-                            <span
-                                key={index}
-                                className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-transparent dark:from-white dark:to-slate-900/10 text-[clamp(2rem,6vw,5rem)] font-semibold leading-none"
+                            <HyperText
+                                duration={1000}
+                                animateOnHover={true}
+                                delay={6}
+                                characterSet={"NΞXAЯISUNDΞЯDΞVΞL0PMΞNT".split("")}
+                                className="whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-transparent dark:from-white dark:to-slate-900/10 text-[clamp(2rem,6vw,5rem)] font-semibold leading-none"
                             >
-                                {word}
-                            </span>
-                        ))}
+                               Nexar is under Development
+                            </HyperText>
                     </div>
-                    <div className='h-full w-full overflow-hidden'>
-                        <Globe className="relative top-[10px] max-w-none min-w-400" />
-                    </div>
+                    
                 </div>
 
             </div>
